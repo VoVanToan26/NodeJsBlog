@@ -5,9 +5,9 @@ const hbs = require("express-handlebars");
 const app = express(); //call function object
 const port = 2200;
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(morgan("combined"));
-
-
 // template engines 
 app.engine("hbs", hbs.engine({
   //config

@@ -5,6 +5,8 @@ const hbs = require("express-handlebars");
 const app = express(); //call function object
 const port = 2200;
 const route = require("./routes");
+const db = require("./config/db");
+db.connect();
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(morgan("combined"));

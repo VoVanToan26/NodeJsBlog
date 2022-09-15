@@ -19,13 +19,12 @@ app.engine(
   })
 );
 app.set("view engine", "hbs"); // suwr dungj view engine laf hbs
-console.log("PATH", path.join(__dirname, "resources/views/"));
-app.set("views", path.join(__dirname, "resources/views/"));
+app.set("views", path.join(__dirname, "resources", "views"));
 
 //routes init
 route(app);
 //127.0.0.1=localhost
 //
 app.listen(port, () =>
-  console.log(`example listening app at http://localhost:${port}`)
+  console.log(`App listening app at http://localhost:${port}`)
 );

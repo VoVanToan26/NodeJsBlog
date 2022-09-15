@@ -9,5 +9,5 @@ const Course = new Schema({
   createDate: { type: Date, default: Date.now },
   updateDate: { type: Date, default: Date.now },
 });
-module.exports = mongoose.model("planets", Course);
+module.exports = mongoose.model("comments", Course);
 //planets Tên bảng  trong database test

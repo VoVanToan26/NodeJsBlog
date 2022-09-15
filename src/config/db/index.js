@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 async function connect() {
   try {
     await mongoose.connect(
-      "mongodb+srv://vantoanvo26:vantoan1@toan.hmtbaxg.mongodb.net/sample_mflix",
+      "mongodb+srv://vantoanvo26:vantoan1@toan.hmtbaxg.mongodb.net/test",
       {}
     );
     console.log("connect success");

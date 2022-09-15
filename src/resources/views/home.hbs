@@ -1,14 +1,18 @@
 <div class="mt-4">
   <div class="row">
     {{#each courses}}
-      <div class="col-sm-6 col-lg-2">
-
-        <div class="card m-2">
-          <img src="{{this.img}}" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{this.name}}</h5>
-            <p class="card-text">{{this.text}}</p>
-            <a href="#" class="btn btn-primary">{{this.date}}</a>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card card-item m-2">
+          <a href="/courses/{{this.slug}}">
+            <img src="{{this.img}}" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body" style="height:200px">
+            <a href="/courses/{{this.slug}}">
+              <h5 class="card-title">{{this.name}}</h5>
+            </a>
+            <p class="card-text" style="height:90px">{{this.description}}</p>
+            <a href="/courses/{{this.slug}}" class="btn btn-primary">Xem khóa
+              học</a>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ const Course = new Schema({
   id: objID,
   name: { type: String, match: /[a-z]/, default: "" },
   img: { type: String, maxLength: 255 },
+  slug: { type: String },
   createDate: { type: Date, default: Date.now },
   updateDate: { type: Date, default: Date.now },
 });

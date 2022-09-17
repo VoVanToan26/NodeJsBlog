@@ -28,6 +28,15 @@ class CoursesController {
       .then(() => res.redirect("/"))
       .catch((err) => {});
   }
+
+  //GET.courses/create
+  edit(req, res, next) {
+    res.render("courses/edit");
+  }
+  //GET.courses/create
+  delete(req, res, next) {
+    res.render("courses/delete");
+  }
 }
 
 module.exports = new CoursesController();

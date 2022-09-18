@@ -4,13 +4,14 @@
       <h3 class="card-title">Update Course</h3>
     </div>
 
-    <form method="POST" action="/courses/store">
+    <form method="POST" action="/courses/edit/{{course._id}}/?_method=PUT">
       <div class="card-body">
         <div class="form-group">
           <label for="name">Name</label>
           <input
             type="text"
             class="form-control"
+            value="{{course.name}}"
             id="name"
             name="name"
             placeholder="Enter name"
@@ -21,6 +22,7 @@
           <input
             type="text"
             class="form-control"
+            value="{{course.description}}"
             id="description"
             name="description"
             placeholder="Enter ndescriptioname"
@@ -31,6 +33,7 @@
           <input
             type="text"
             class="form-control"
+            value="{{course.videoId}}"
             id="videoId"
             name="videoId"
             placeholder="Enter videoId"
@@ -41,6 +44,7 @@
           <input
             type="text"
             class="form-control"
+            value="{{course.level}}"
             id="level"
             name="level"
             placeholder="Enter level"
@@ -48,7 +52,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Edit Course</button>
+        <button type="submit" class="btn btn-primary">Update Course</button>
       </div>
     </form>
   </div>

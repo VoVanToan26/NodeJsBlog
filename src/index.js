@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
 const hbs = require("express-handlebars");
+const methodOverride = require("method-override");
 const route = require("./routes");
 const db = require("./config/db");
 const app = express(); //call function object
@@ -20,7 +21,7 @@ app.use(
   express.static(path.join(__dirname, "../node_modules/jquery/dist"))
 );
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(methodOverride("_method"));
 app.use(morgan("combined"));
 // template engines config handlebars templates
 app.engine(

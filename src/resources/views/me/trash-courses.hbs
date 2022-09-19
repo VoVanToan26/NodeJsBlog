@@ -1,7 +1,7 @@
 <div class='m-4 m-auto'>
     <div>
-        <h3>My courses</h3>
-        <a href='/me/trash/courses'>Trash</a></div>
+        <a href='/me/stored/courses'>Back</a></div>
+    <h3>My courses deleted</h3>
     <div class='table-responsive'>
         <table class='table mt-4'>
             <thead>
@@ -22,24 +22,26 @@
                         <td>{{this.createdAt}}</td>
                         <td>
                             <a
-                                href='/courses/edit/{{this._id}}'
+                                href='/courses/restore/{{this._id}}'
                                 type='button'
-                                class='btn btn-outline-primary btn-link'
-                            >Edit</a>
+                                class='btn btn-outline-primary btn-link btn-restore'
+                            >Restore</a>
                             <a
                                 href='/courses/del/{{this._id}}'
                                 type='button'
-                                class='btn btn-outline-primary btn-link'
+                                class='btn btn-outline-primary btn-link btn-force-delete'
                                 data-bs-toggle='modal'
                                 data-id='{{this._id}}'
                                 data-bs-target='#delete-courses-modal'
-                            >Del</a>
+                            >Force delete</a>
                         </td>
                     </tr>
                 {{else}}
                     <tr>
-                        <td colspan='5' class='text-center'>There are no course
-                            <a href='/courses/create'> Click here to upload new Course</a>
+                        <td colspan='5' class='text-center'>There are
+                            no course deleted in trash
+                            <a href='/me/stored/courses'>
+                                Click here to List Course</a>
                         </td>
                     </tr>
                 {{/each}}
@@ -61,7 +63,8 @@
     <div class='modal-dialog'>
         <div class='modal-content'>
             <div class='modal-header'>
-                <h5 class='modal-title' id='exampleModalLabel'>Delete courses</h5>
+                <h5 class='modal-title' id='exampleModalLabel'>Delete
+                    courses</h5>
                 <button
                     type='button'
                     class='btn-close'
@@ -78,7 +81,11 @@
                     class='btn btn-secondary'
                     data-bs-dismiss='modal'
                 >Close</button>
-                <button type='button' id='delete-btn' class='btn btn-danger'>Delete</button>
+                <button
+                    type='button'
+                    id='delete-btn'
+                    class='btn btn-danger'
+                >Delete</button>
             </div>
         </div>
     </div>
@@ -86,9 +93,22 @@
 {{! Delete hidden form }}
 <form method='POST' name='delete-course-form'></form>
 <script>
-    var deleteForm = document.forms['delete-course-form']; var exampleModal =
-    document.getElementById('delete-courses-modal'); exampleModal.addEventListener('show.bs.modal',
-    function (event) { var courseId = event.relatedTarget.getAttribute('data-id'); var
-    btnDeleteCourse = document.getElementById('delete-btn') ;btnDeleteCourse.onclick = () => {
-    deleteForm.action = '/courses/delete/' + courseId + '?_method=DELETE' deleteForm.submit(); } })
+document.addEventListener('DOMContentLoaded', () => {
+    var courseId;
+    var deleteForm = document.forms['delete-course-form'];
+    var exampleModal = document.getElementById('delete-courses-modal');
+    var restoreBtn = $('.btn-restore')
+    console.log(restoreBtn)
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+        var courseId = event.relatedTarget.getAttribute('data-id');
+        var btnDeleteCourse = document.getElementById('delete-btn');
+        btnDeleteCourse.onclick = () => {
+            deleteForm.action =
+                '/courses/delete/' + courseId + '?_method=DELETE';
+            deleteForm.submit();
+        };
+    });
+})
+ 
+
 </script>

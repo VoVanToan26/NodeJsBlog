@@ -34,7 +34,7 @@ class CoursesController {
     Course.findById(req.params.id)
       .then((course) => {
         res.render("courses/edit", { course: mongooseToOject(course) });
-        console.log("course", course);
+        // console.log("course", course);
       })
       .catch(next);
   }
@@ -47,7 +47,7 @@ class CoursesController {
   }
   //DELETE.courses/create/id
   delete(req, res, next) {
-    Course.deleteOne({ _id: req.params.id })
+    Course.delete({ _id: req.params.id })
       .then(() => res.redirect("back")) // go to back
       .catch(next);
   }

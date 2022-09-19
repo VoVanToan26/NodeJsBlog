@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const objID = Schema.ObjectId;
 const slug = require("mongoose-slug-generator");
-mongoose.plugin(slug);
+const mongooseDelete = require('mongoose-delete');
+
 const Course = new Schema(
   {
     id: objID,
@@ -15,5 +16,12 @@ const Course = new Schema(
   },
   { timestamps: true }
 );
+
+mongoose.plugin(slug);
+Course.plugin(mongooseDelete, {
+  deletedAt: true,
+  overrideMethods: 'all'
+})
+
 module.exports = mongoose.model("course", Course);
 //planets Tên bảng  trong database test

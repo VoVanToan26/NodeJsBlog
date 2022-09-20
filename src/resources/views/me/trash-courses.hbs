@@ -25,6 +25,7 @@
                                 href='/courses/restore/{{this._id}}'
                                 type='button'
                                 class='btn btn-outline-primary btn-link btn-restore'
+                                data-id='{{this._id}}'
                             >Restore</a>
                             <a
                                 href='/courses/del/{{this._id}}'
@@ -92,23 +93,30 @@
 </div>
 {{! Delete hidden form }}
 <form method='POST' name='delete-course-form'></form>
+{{! Resotre hidden form }}
+<form method='POST' name='restore-course-form'></form>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     var courseId;
     var deleteForm = document.forms['delete-course-form'];
+    var restoreForm = document.forms['restore-course-form'];
     var exampleModal = document.getElementById('delete-courses-modal');
-    var restoreBtn = $('.btn-restore')
-    console.log(restoreBtn)
+    var restoreBtn = $('.btn-restore');
     exampleModal.addEventListener('show.bs.modal', function (event) {
         var courseId = event.relatedTarget.getAttribute('data-id');
         var btnDeleteCourse = document.getElementById('delete-btn');
         btnDeleteCourse.onclick = () => {
-            deleteForm.action =
-                '/courses/delete/' + courseId + '?_method=DELETE';
+            deleteForm.action = `/courses/delete/${courseId}?_method=DELETE`;
             deleteForm.submit();
         };
     });
+    //Restore 
+    restoreBtn.click(function (e) {
+        e.preventDefault(); 
+        var courseId = $(this).data('id');
+        restoreForm.action = `/courses/restore/'${courseId}'?_method=PATCH`; 
+        restoreForm.submit();
+    })
 })
- 
 
 </script>

@@ -6,6 +6,9 @@ router.post("/store", coursesController.store); // Bat cu duoi nao cung tury cap
 router.get("/create", coursesController.create); // Bat cu duoi nao cung tury cap dc
 router.get("/edit/:id", coursesController.edit); // Bat cu duoi nao cung tury cap dc
 router.put("/edit/:id", coursesController.update); // Bat cu duoi nao cung tury cap dc
+router.patch("/restore/:id", coursesController.restore); // Bat cu duoi nao cung tury cap dc
 router.delete("/delete/:id", coursesController.delete); // Bat cu duoi nao cung tury cap dc
 router.get("/:slug", coursesController.show); // Bat cu duoi nao cung tury cap dc
 module.exports = router;
+
+

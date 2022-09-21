@@ -37,6 +37,20 @@ app.engine(
 app.set("view engine", "hbs"); // suwr dungj view engine laf hbs
 app.set("views", path.join(__dirname, "resources", "views"));
 app.use(express.urlencoded({ extended: true }));
+
+// app.use(middleware)
+// function middleware(req, res, next) {
+//   if(['vethuong','vevip'].includes(req.query.ve)){
+//     req.face='GachGach';
+//     return next();
+//   }
+//   res.status(404).json({
+//     message: 'Not Found'
+//   })
+// }
+
+
+
 //routes init
 route(app);
 //127.0.0.1=localhost
@@ -44,3 +58,4 @@ route(app);
 app.listen(port, () =>
   console.log(`App listening app at http://localhost:${port}`)
 );
+

@@ -1,0 +1,28 @@
+# middleware
+
+## Ý nghĩa:
+- Phần mềm trung gian, đứng giữa các thành phần trong mô hình phần mềm
+
+
+Browser ( client) === request ==> Sever ( Node)
+
+
+Browser ( client) <=== response == Sever ( Node)
+
+### Vai trò
+Kiểm tra Validation
+Cho phép vào
+Không cho phép vào Validatie passed
+Chỉnh sửa/ Thay đổi
+
+app.get('url', middlefunction1(req,res,next),middlefunction1(req,res,next),middlefunction2req,res,next),....)
+https://fullstack.edu.vn/learning/nodejs?id=9e718206-9a55-483d-804b-e088129bc75e  28.42
+
+Lưu ý chỉ có tác dụng trên một path
+
+
+Ứng dụng 
+Dựng chức năng xác thức (Authentication)
+Dựng chức năng phân quyền (Authentication)
+Dựng chức năng login (Authentication)
+Để chia sẻ các giá trị của biến tới tất cả cấc view(BE)

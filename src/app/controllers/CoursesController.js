@@ -28,7 +28,7 @@ class CoursesController {
         course
             .save() //save done
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((err) => {});
+            .catch((err) => { });
     }
 
     //GET.courses/edit:id
@@ -67,6 +67,19 @@ class CoursesController {
         Course.restore({ _id: req.params.id })
             .then(() => res.redirect('back')) // go to back
             .catch(next);
+    }
+    //PATCH.courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        console.log(req.body.actions);
+        switch(req.body.actions){
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back')) // go to back
+                    .catch(next);
+                break;
+            default:
+                res.json({ messeage: 'Action is in valid' })
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 <div class='m-4 m-auto'>
     <div>
         <h3>My courses</h3>
-        <a href='/me/trash/courses'>Trash</a></div>
+        <a href='/me/trash/courses'>Trash {{deletedCount}}</a></div>
     <div class='table-responsive'>
         <table class='table mt-4'>
             <thead>
@@ -90,5 +90,5 @@
     document.getElementById('delete-courses-modal'); exampleModal.addEventListener('show.bs.modal',
     function (event) { var courseId = event.relatedTarget.getAttribute('data-id'); var
     btnDeleteCourse = document.getElementById('delete-btn') ;btnDeleteCourse.onclick = () => {
-    deleteForm.action = '/courses/delete/' + courseId + '?_method=DELETE' deleteForm.submit(); } })
+    deleteForm.action = '/courses/delete/' + courseId + '?_method=DELETE'; deleteForm.submit(); } })
 </script>

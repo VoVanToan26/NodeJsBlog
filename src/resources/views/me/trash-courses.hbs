@@ -19,7 +19,7 @@
                         <th scope='row'>{{sum @index 1}}</th>
                         <td>{{this.name}}</td>
                         <td>{{this.level}}</td>
-                        <td>{{this.createdAt}}</td>
+                        <td>{{this.deletedAt}}</td>
                         <td>
                             <a
                                 href='/courses/restore/{{this._id}}'
@@ -74,7 +74,7 @@
                 ></button>
             </div>
             <div class='modal-body'>
-                Are you want to delete the course?
+                Are you want to force delete the course? The course will be deleted and cannot restore
             </div>
             <div class='modal-footer'>
                 <button
@@ -106,7 +106,7 @@
         var courseId = event.relatedTarget.getAttribute('data-id');
         var btnDeleteCourse = document.getElementById('delete-btn');
         btnDeleteCourse.onclick = () => {
-            deleteForm.action = `/courses/delete/${courseId}?_method=DELETE`;
+            deleteForm.action =`/courses/forceDelete/${courseId}?_method=DELETE`;
             deleteForm.submit();
         };
     });
@@ -114,7 +114,7 @@
     restoreBtn.click(function (e) {
         e.preventDefault(); 
         var courseId = $(this).data('id');
-        restoreForm.action = `/courses/restore/'${courseId}'?_method=PATCH`; 
+        restoreForm.action =`/courses/restore/${courseId}?_method=PATCH`; 
         restoreForm.submit();
     })
 })

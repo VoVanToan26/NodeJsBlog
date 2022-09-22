@@ -1,11 +1,38 @@
-<div class='m-4 m-auto'>
+<form   class='m-4' name="container-form" method="POST" action="/courses/handle-delete-form-actions">
     <div>
-        <a href='/me/stored/courses'>Back</a>
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-            Default checkbox
-        </label>
         <h3>My courses deleted</h3>
+        <a href='/me/stored/courses'>Back</a>
+        <div class='mt-4 d-flex align-items-center'>
+            <div class='form-check'>
+                <input
+                    class='form-check-input'
+                    type='checkbox'
+                    value=''
+                    id='checkAllCheckbox'
+                />
+            </div>
+            <label
+                class='form-check-label me-3 ms-3'
+                for='checkAllCheckbox'
+            >
+                Select ALL
+            </label>
+            <select
+                name="actions"
+                class='form-select form-control form-control-sm checkbox-select-all-options'
+                aria-label='Default select example'
+                required
+            >
+                <option value="" selected>Select actions</option>
+                <option value='delete'>Delete</option>
+                <option value='2'>Two</option>
+                <option value='3'>Three</option>
+            </select>
+
+            <button class='btn btn-primary btn-sm disabled ms-4 btn-check-all-submit' type="submit">
+                Excute
+            </button>
+        </div>
     <div class="form-check">
        
 </div>

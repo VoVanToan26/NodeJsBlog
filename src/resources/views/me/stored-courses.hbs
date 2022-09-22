@@ -40,9 +40,9 @@
             <thead>
                 <tr>
                     <th scope='col'>#</th>
-                    <th scope='col'>Name</th>
-                    <th scope='col'>Level</th>
-                    <th scope='col '>Create Time</th>
+                    <th scope='col'>Name <i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
+                    <th scope='col'>Level<i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
+                    <th scope='col '>Create Time<i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
                     <th scope='col '></th>
                 </tr>
             </thead>
@@ -67,7 +67,9 @@
                                 href='/courses/edit/{{this._id}}'
                                 type='button'
                                 class='btn btn-outline-primary btn-link'
-                            >Edit</a>
+                            >Edit
+                          <i class="fa-solid fa-square-pen"></i>
+                            </a>
                             <a
                                 href='/courses/del/{{this._id}}'
                                 type='button'
@@ -75,7 +77,9 @@
                                 data-bs-toggle='modal'
                                 data-id='{{this._id}}'
                                 data-bs-target='#delete-courses-modal'
-                            >Del</a>
+                            >Del
+                            <i class="fa-regular fa-trash-can"></i>
+                            </a>
                         </td>
                     </tr>
                 {{else}}

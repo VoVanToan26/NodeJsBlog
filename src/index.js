@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
 const hbs = require("express-handlebars");
+
+const SortMiddleWare = require("./app/middlewares/SortMiddleWare")
+
 const methodOverride = require("method-override");
 const route = require("./routes");
 const db = require("./config/db");
@@ -31,13 +34,34 @@ app.engine(
     extname: ".hbs",
     helpers: {
       sum: (a, b) => a + b,
+      sortable: (field, sort) => {
+        const sortType = field == sort.column ? sort.type : 'default'
+        const icons = {
+          default: '<i class="fa-solid fa-sort"></i>',
+          asc: '<i class="fa-solid fa-arrow-up-wide-short"></i>',
+          desc: '<i class="fa-solid fa-arrow-down-wide-short"></i>',
+        }
+        const types = {
+          default: 'desc',
+          asc: 'desc',
+          desc: 'asc',
+        }
+        const icon = icons[sortType]
+        const type = types[sortType]
+        return `
+          <a href="?_sort&column=${field}&type=${type}">
+            ${icon}
+          </a>
+        `
+      }
     }
   })
 );
 app.set("view engine", "hbs"); // suwr dungj view engine laf hbs
 app.set("views", path.join(__dirname, "resources", "views"));
 app.use(express.urlencoded({ extended: true }));
-
+// custom middleware
+app.use(SortMiddleWare);
 // app.use(middleware)
 // function middleware(req, res, next) {
 //   if(['vethuong','vevip'].includes(req.query.ve)){

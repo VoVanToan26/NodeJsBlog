@@ -24,11 +24,12 @@ class CoursesController {
     store(req, res, next) {
         const formData = req.body;
         formData.img = `https://img.youtube.com/vi/${formData.videoId}/sddefault.jpg`;
+
         const course = new Course(req.body);
         course
             .save() //save done
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((err) => { });
+            .catch(next);
     }
 
     //GET.courses/edit:id
@@ -71,7 +72,7 @@ class CoursesController {
     //PATCH.courses/handle-form-actions
     handleFormActions(req, res, next) {
         console.log(req.body.actions);
-        switch(req.body.actions){
+        switch (req.body.actions) {
             case 'delete':
                 Course.delete({ _id: { $in: req.body.courseIds } })
                     .then(() => res.redirect('back')) // go to back

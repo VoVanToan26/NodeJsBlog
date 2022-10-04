@@ -3,20 +3,7 @@
         <h3>My courses</h3>
         <a href='/me/trash/courses'>Trash {{deletedCount}}</a>
         <div class='mt-4 d-flex align-items-center'>
-            <div class='form-check'>
-                <input
-                    class='form-check-input'
-                    type='checkbox'
-                    value=''
-                    id='checkAllCheckbox'
-                />
-            </div>
-            <label
-                class='form-check-label me-3 ms-3'
-                for='checkAllCheckbox'
-            >
-                Select ALL
-            </label>
+            
             <select
                 name="actions"
                 class='form-select form-control form-control-sm checkbox-select-all-options'
@@ -34,15 +21,34 @@
             </button>
         </div>
     </div>
-
     <div class='table-responsive'>
         <table class='table mt-4'>
             <thead>
                 <tr>
-                    <th scope='col'>#</th>
-                    <th scope='col'>Name <i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
-                    <th scope='col'>Level<i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
-                    <th scope='col '>Create Time<i class="ms-1 fa-solid fa-arrows-up-down"></i></th>
+                    <th scope='col'>
+                    <div class='form-check'>
+                    <input
+                        class='form-check-input'
+                        type='checkbox'
+                        value=''
+                        id='checkAllCheckbox'
+                    />
+                     <label
+                        class='form-check-label me-3 ms-3'
+                        for='checkAllCheckbox'
+                    >
+                    Select ALL
+                    </label>
+                    </div>
+                    </th>
+                    <th scope='col'>id</th>
+                    <th scope='col'>Name 
+                        {{{sortable 'name' _sort}}}
+                    </th>
+                    <th scope='col'>Level 
+                         {{{sortable 'level' _sort}}}
+                    <th scope='col '>Create Time 
+                         {{{sortable 'createdAt' _sort}}}
                     <th scope='col '></th>
                 </tr>
             </thead>
@@ -58,7 +64,7 @@
                                     value='{{this._id}}'
                                 />
                             </div></td>
-                        <td scope='row'>{{sum @index 1}}</td>
+                        <td scope='row'>{{this._id}}</td>
                         <td>{{this.name}}</td>
                         <td>{{this.level}}</td>
                         <td>{{this.createdAt}}</td>
@@ -181,6 +187,7 @@
             checkAllSubmitBtn.addClass('disabled')
         }
     }
+    
 })
 
 </script>
